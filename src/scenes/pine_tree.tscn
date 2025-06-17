@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://ck162w1bw4qs0"]
+
+[ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://src/assets/characters/ground_shadow.png" id="1_32ir8"]
+[ext_resource type="Texture2D" uid="uid://caqfk2xng5v5u" path="res://src/assets/trees/pine_tree.png" id="2_mkmnt"]
+
+[sub_resource type="Animation" id="Animation_mkmnt"]
+resource_name = "Reset"
+
+[sub_resource type="Animation" id="Animation_32ir8"]
+resource_name = "idle_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ug3b"]
+_data = {
+&"Reset": SubResource("Animation_mkmnt"),
+&"idle_animation": SubResource("Animation_32ir8")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ug3b"]
+radius = 17.0
+height = 34.0
+
+[node name="PineTree" type="StaticBody2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6ug3b")
+}
+
+[node name="GroundShadow" type="Sprite2D" parent="."]
+modulate = Color(0.556953, 0.556953, 0.556953, 1)
+position = Vector2(0.749997, 63)
+scale = Vector2(0.815476, 0.730769)
+texture = ExtResource("1_32ir8")
+
+[node name="PineTree" type="Sprite2D" parent="."]
+texture = ExtResource("2_mkmnt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 64)
+shape = SubResource("CapsuleShape2D_6ug3b")
